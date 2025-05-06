@@ -76,8 +76,6 @@ async def geocoder(update, context):
             "format": "json",
             "geocode": context2
         })
-
-        # Проверка наличия ключа 'response'
         if "response" not in response:
             await update.message.reply_text("Ошибка: Нет данных в ответе от геокодера.")
             return
@@ -154,7 +152,7 @@ async def search_hotels(city: str):
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_state.pop(update.message.from_user.id, None)  # очищаем состояние
+    user_state.pop(update.message.from_user.id, None)
     await update.message.reply_text(
         "Привет! Я помогу найти лучшие места для проживания и интересные места в городе.",
         reply_markup=get_main_keyboard()
